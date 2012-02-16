@@ -41,6 +41,7 @@ local make_concatter,
       ends_with,
       create_escape_subst,
       url_encode,
+      is_ipv4,
       string_exports
       = import 'lua-nucleo/string.lua'
       {
@@ -62,7 +63,8 @@ local make_concatter,
         'starts_with',
         'ends_with',
         'create_escape_subst',
-        'url_encode'
+        'url_encode',
+        'is_ipv4'
       }
 
 --------------------------------------------------------------------------------
@@ -331,6 +333,21 @@ test:test_for "url_encode" (function ()
       url_encode("1234567890-=!@#$%^&*()_+"),
       "1234567890-%3D%21%40%23%24%25%5E%26%2A%28%29_%2B"
     )
+end)
+
+--------------------------------------------------------------------------------
+
+test:test_for "is_ipv4" (function ()
+  ensure_equals("1.2.3.4 is IPv4", is_ipv4("1.2.3.4"), true)
+  ensure_equals("127.0.0.1 is IPv4", is_ipv4("127.0.0.1"), true)
+  ensure_equals("x127.0.0.1 is not IPv4", is_ipv4("x127.0.0.1"), false)
+  ensure_equals(
+      "127.300.400.999 is not IPv4",
+      is_ipv4("127.300.400.999"),
+      false
+    )
+  ensure_equals("1.1.1. is not IPv4", is_ipv4("1.1.1."), false)
+  ensure_equals(".23.231.32 is not IPv4", is_ipv4(".23.231.32"), false)
 end)
 
 --------------------------------------------------------------------------------

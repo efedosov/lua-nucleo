@@ -239,6 +239,18 @@ local ends_with = function(str, suffix)
   return slen == 0 or ((#str >= slen) and (str:sub(-slen, -1) == suffix))
 end
 
+local is_ipv4 = function (str)
+  -- N.B. ipv6 contains no dots, so ipv4 pattern be checked
+  local parts = split_by_char(str, '.')
+  if not parts or #parts ~= 4 then return false end
+  -- loose check on whether parts belong to [0..255]
+  for _, x in ipairs(parts) do
+    x = tonumber(x)
+    if not x or x > 255 then return false end
+  end
+  return true
+end
+
 return
 {
   escape_string = escape_string;
@@ -260,4 +272,5 @@ return
   starts_with = starts_with;
   ends_with = ends_with;
   url_encode = url_encode;
+  is_ipv4 = is_ipv4;
 }
