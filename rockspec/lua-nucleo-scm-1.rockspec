@@ -31,6 +31,7 @@ build = {
          ["lua-nucleo.factory"] = "lua-nucleo/factory.lua";
          ["lua-nucleo.functional"] = "lua-nucleo/functional.lua";
          ["lua-nucleo.import_as_require"] = "lua-nucleo/import_as_require.lua";
+         ["lua-nucleo.init"] = "lua-nucleo/init.lua";
          ["lua-nucleo.language"] = "lua-nucleo/language.lua";
          ["lua-nucleo.log"] = "lua-nucleo/log.lua";
          ["lua-nucleo.math"] = "lua-nucleo/math.lua";
