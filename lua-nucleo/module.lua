@@ -4,7 +4,8 @@
 -- Copyright (c) lua-nucleo authors (see file `COPYRIGHT` for the license)
 --------------------------------------------------------------------------------
 
-if declare then declare 'import' end
-import = require('lua-nucleo.import_as_require').import
+-- Obsolete, use require 'lua-nucleo'
+
+require 'lua-nucleo.import'
 
 -- You may also want to require 'lua-nucleo.strict'.
