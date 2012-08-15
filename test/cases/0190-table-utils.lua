@@ -2433,11 +2433,64 @@ end)
 
 --------------------------------------------------------------------------------
 
+test:group "twithdefaults"
+
+--------------------------------------------------------------------------------
+
+-- Test based on real bug scenario
+-- tz#1797
+
+test "twithdefaults_nested_tables" (function()
+
+  local t =
+  {
+    a =
+    {
+      b =
+      {
+        { d = 1 };
+        { d = 2 };
+      }
+    }
+  }
+
+  local defaults =
+  {
+    a =
+    {
+      b =
+      {
+        c = 125;
+      }
+    }
+  }
+
+  local result =
+  {
+    a =
+    {
+      b =
+      {
+        { d = 1 };
+        { d = 2 };
+        c = 125;
+      }
+    }
+  }
+
+  ensure_tdeepequals(
+      "twithdefaults nested tables",
+      twithdefaults(t, defaults),
+      result
+    )
+end)
+
+--------------------------------------------------------------------------------
+
 test:UNTESTED 'tmap_values'
 test:UNTESTED 'torderedset'
 test:UNTESTED 'torderedset_insert'
 test:UNTESTED 'torderedset_remove'
-test:UNTESTED 'twithdefaults'
 test:UNTESTED 'tifilter'
 test:UNTESTED 'tsetof'
 test:UNTESTED 'tset_many'
