@@ -50,7 +50,6 @@ return
   '0320-timestamp';
   '0330-tpretty';
   '0331-prettifier';
-  '0340-import_as_require';
   '0350-module';
   '0360-stack_with_factory';
   '0370-ordered_named_cat_manager';
@@ -61,4 +60,5 @@ return
   '0420-code-foreign-globals-luajit2';
   '0430-code-foreign-globals-lua5_1';
   '0440-require_and_declare';
+  '0450-init';
 }
