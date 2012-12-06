@@ -15,3 +15,5 @@
 
 *.so
 *.kdev4
+
+*.komodoproject
